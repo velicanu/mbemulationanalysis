@@ -1,0 +1,35 @@
+Run 259152
+
+(Double_t) 5.273800e+04
+root [4] h->GetBinContent(2)
+(Double_t) 6.005000e+03
+root [5] HltTree->Draw("L1_MinimumBiasHF1_OR>>h(2,-0.5,1.5)")
+root [6] h->GetBinContent(2)
+(Double_t) 8.001000e+03
+root [7] HltTree->Draw("L1_MinimumBiasHF2_AND>>h(2,-0.5,1.5)")
+root [8] h->GetBinContent(2)
+(Double_t) 4.932000e+03
+root [9] HltTree->Draw("L1_MinimumBiasHF2_OR>>h(2,-0.5,1.5)")
+root [10] h->GetBinContent(2)
+(Double_t) 6.879000e+03
+root [11] HltTree->Draw("L1_SingleEG2_BptxAND>>h(2,-0.5,1.5)")
+root [12] h->GetBinContent(2)
+(Double_t) 6.720000e+02
+root [13] HltTree->Draw("L1_SingleEG5_BptxAND>>h(2,-0.5,1.5)")
+root [14] h->GetBinContent(2)
+(Double_t) 7.500000e+01
+root [15] HltTree->Draw("L1_DoubleEG5_BptxAND>>h(2,-0.5,1.5)")
+root [16] h->GetBinContent(2)
+(Double_t) 6.000000e+00
+root [17] HltTree->Draw("L1_DoubleEG5_BptxAND>>h(2,-0.5,1.5)")
+root [18] h->GetBinContent(2)
+(Double_t) 6.000000e+00
+root [19] HltTree->Draw("L1_EG2_NotMinimumBiasHF2_AND>>h(2,-0.5,1.5)")
+root [20] h->GetBinContent(2)
+(Double_t) 4.900000e+01
+root [21] HltTree->Draw("L1_DoubleEG2_NotMinimumBiasHF2_AND>>h(2,-0.5,1.5)")
+root [22] h->GetBinContent(2)
+(Double_t) 1.000000e+00
+root [23] HltTree->Draw("L1_EG5_NotMinimumBiasHF2_AND>>h(2,-0.5,1.5)")
+root [24] h->GetBinContent(2)
+(Double_t) 3.000000e+00
