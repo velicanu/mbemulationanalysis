@@ -32,20 +32,29 @@ void L1UpgradeTree::Loop(int n)
   //    fChain->GetEntry(jentry);       //read all branches
   //by  b_branchname->GetEntry(ientry); //read only this branch
   if (fChain == 0) return;
-  Long64_t nentries = GetEntries();
+
+  Long64_t nentries = fChain->GetEntriesFast();
+
+  
   Long64_t nbytes = 0, nb = 0;
   
   int bits[13] = {};
+  int alex[13] = {};
   
   for (Long64_t jentry=0; jentry<nentries;jentry++) {
     if(jentry%999999==0) cout<<jentry<<"/"<<nentries<<endl;
     Long64_t ientry = LoadTree(jentry);
     if (ientry < 0) break;
     nb = fChain->GetEntry(jentry);   nbytes += nb;
+    std::bitset<12> input = std::bitset< 12 > (hfbits_hwPt[0][0]);
     for(int i = 0 ; i < 12 ; ++i)
     {
-      bits[i] += ((hfring_hwPt[0][0])>>i)&0x1;
+      alex[i] += ((hfring_hwPt[0][0])>>i)&0x1;
+      if(input[12-i]) ++bits[i];
     }
+    ++bits[12];
+    // std::cout<<input<<std::endl;
+    if(jentry>n) break;
   }
   std::cout<<"bit #,";
   for(int i = 0 ; i < 13 ; ++i)
@@ -53,11 +62,44 @@ void L1UpgradeTree::Loop(int n)
     std::cout<<i<<",";
   }
   std::cout<<std::endl;
-  std::cout<<"bits ,";
+  std::cout<<"value,";
   for(int i = 0 ; i < 13 ; ++i)
   {
     std::cout<<bits[i]<<",";
   }
   std::cout<<std::endl;
+  std::cout<<"alex ,";
+  for(int i = 0 ; i < 13 ; ++i)
+  {
+    std::cout<<alex[i]<<",";
+  }
+  std::cout<<std::endl;
+  
+  
+   // int bits[13] = {};
+  
+  // for (Long64_t jentry=0; jentry<nentries;jentry++) {
+    // if(jentry%999999==0) cout<<jentry<<"/"<<nentries<<endl;
+    // Long64_t ientry = LoadTree(jentry);
+    // if (ientry < 0) break;
+    // nb = fChain->GetEntry(jentry);   nbytes += nb;
+    // for(int i = 0 ; i < 12 ; ++i)
+    // {
+      // bits[i] += ((hfring_hwPt[0][0])>>i)&0x1;
+    // }
+  // }
+  // std::cout<<"bit #,";
+  // for(int i = 0 ; i < 12 ; ++i)
+  // {
+    // std::cout<<i<<",";
+  // }
+  // std::cout<<std::endl;
+  // std::cout<<"bits ,";
+  // for(int i = 0 ; i < 12 ; ++i)
+  // {
+    // std::cout<<bits[i]<<",";
+  // }
+  // std::cout<<std::endl;
+  
   
 }
