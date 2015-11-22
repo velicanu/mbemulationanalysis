@@ -32,10 +32,7 @@ void L1UpgradeTree::Loop(int n)
   //    fChain->GetEntry(jentry);       //read all branches
   //by  b_branchname->GetEntry(ientry); //read only this branch
   if (fChain == 0) return;
-
-  Long64_t nentries = fChain->GetEntriesFast();
-
-  
+  Long64_t nentries = GetEntries();
   Long64_t nbytes = 0, nb = 0;
   
   int bits[13] = {};

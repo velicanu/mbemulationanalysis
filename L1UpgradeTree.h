@@ -179,11 +179,13 @@ public :
    virtual ~L1UpgradeTree();
    virtual Int_t    Cut(Long64_t entry);
    virtual Int_t    GetEntry(Long64_t entry);
+   virtual Long64_t GetEntries();
    virtual Long64_t LoadTree(Long64_t entry);
    virtual void     Init(TTree *tree);
    virtual void     Loop(int n = 10);
    virtual Bool_t   Notify();
    virtual void     Show(Long64_t entry = -1);
+   Long64_t _nentries;
 };
 
 #endif
@@ -202,6 +204,7 @@ L1UpgradeTree::L1UpgradeTree(string filename, TTree *tree) : fChain(0)
 
    }
    Init(tree);
+   _nentries = fChain->GetEntriesFast();
 }
 
 L1UpgradeTree::~L1UpgradeTree()
@@ -210,6 +213,10 @@ L1UpgradeTree::~L1UpgradeTree()
    delete fChain->GetCurrentFile();
 }
 
+Long64_t L1UpgradeTree::GetEntries()
+{
+   return _nentries;
+}
 Int_t L1UpgradeTree::GetEntry(Long64_t entry)
 {
 // Read contents of entry.
@@ -239,6 +246,8 @@ void L1UpgradeTree::Init(TTree *tree)
    // Init() will be called many times when running on PROOF
    // (once per file to be processed).
 
+
+   
    // Set object pointer
    jet_hwPt = 0;
    jet_hwEta = 0;
