@@ -46,7 +46,7 @@ void L1UpgradeTree::Loop(int n)
     Long64_t ientry = LoadTree(jentry);
     if (ientry < 0) break;
     nb = fChain->GetEntry(jentry);   nbytes += nb;
-    std::bitset<12> input = std::bitset< 12 > (hfbits_hwPt[0][0]);
+    std::bitset<12> input = std::bitset< 12 > (hfring_hwPt[0][0]);
     for(int i = 0 ; i < 12 ; ++i)
     {
       alex[i] += ((hfring_hwPt[0][0])>>i)&0x1;
